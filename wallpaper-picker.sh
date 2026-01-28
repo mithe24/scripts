@@ -1,30 +1,25 @@
 #!/bin/sh
-# Program for picking wallpaper using Dmenu.
+# Pick a wallpaper using dmenu
 
-FOLDER="$HOME/pictures/wallpaper"
+WALLPAPER_DIR="$HOME/pictures/wallpaper"
 
-menu() {
-    CHOICE=$(ls "$FOLDER" | dmenu -l 15 -i -p "Wallpaper: ")
+pick_wallpaper() {
+    choice=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f -printf '%f\n' 2>/dev/null \
+        | dmenu -i -l 15 -p "Wallpaper:")
 
-    case "$CHOICE" in
-        *.*)
-            wallpaper "$FOLDER/$CHOICE"
-            ;;
-        *)
-            exit 0
-            ;;
-       
-    esac
+    [ -n "$choice" ] || exit 0
+
+    wallpaper "$WALLPAPER_DIR/$choice"
 }
 
-case "$#" in
+case $# in
     0)
-        menu
+        pick_wallpaper
         ;;
     1)
         wallpaper "$1"
         ;;
     *)
-        exit 0
+        exit 1
         ;;
 esac
