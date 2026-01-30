@@ -5,7 +5,7 @@ DOCS="$HOME/documents"
 
 choice=$(find "$DOCS" -type f 2>/dev/null \
     | sed "s|^$DOCS/||" \
-    | dmenu -i -l 15 -p "Documents:")
+    | dmenu -i -l 5 -p "Documents:")
 
 [ -z "$choice" ] && exit 0
 
