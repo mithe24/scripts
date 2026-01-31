@@ -59,15 +59,13 @@ battery_state_symbol() {
     # No batteries found
     [ "$bat_found" -eq 0 ] && echo " " && return 1
     
-    # Priority: charging > discharging > not_charging > full
+    # Priority: charging > discharging > not_charging
     # If any battery is charging, show charging
     [ "$charging" -eq 1 ] && echo "⁺" && return 0
     # If any battery is discharging, show discharging
     [ "$discharging" -eq 1 ] && echo "⁻" && return 0
     # If any battery is not charging (plugged but not charging)
     [ "$not_charging" -eq 1 ] && echo "˜" && return 0
-    # All batteries full
-    [ "$full" -eq 1 ] && echo "=" && return 0
     
     # Unknown status
     echo " "
