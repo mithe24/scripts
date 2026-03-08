@@ -1,7 +1,7 @@
 #!/bin/sh
 # Utility for opening documents using dmenu.
 
-DOCS="$XDG_WORK_DIR"
+DOCS="$XDG_DOCUMENTS_DIR"
 
 choice=$(find "$DOCS" -type f 2>/dev/null \
     | sed "s|^$DOCS/||" \

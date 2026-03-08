@@ -1,7 +1,7 @@
 #!/bin/sh
 # Utility for opening projects using dmenu.
 
-CONFIG="$HOME/.config"
+CONFIG="$XDG_CONFIG_HOME"
 
 choice=$(ls "$CONFIG" | dmenu -i -l 5 -p "Config:")
 

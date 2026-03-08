@@ -1,7 +1,7 @@
 #!/bin/sh
 # Pick a wallpaper using dmenu
 
-WALLPAPER_DIR="$HOME/pictures/wallpaper"
+WALLPAPER_DIR="$XDG_PICTURES_DIR/wallpaper"
 
 choice=$(find "$WALLPAPER_DIR" \
     -maxdepth 1 \
